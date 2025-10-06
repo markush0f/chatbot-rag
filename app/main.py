@@ -1,10 +1,8 @@
 from fastapi import FastAPI
 from app.routers.drive import router as drive_router
-# from app.api.routes.rag_router import router as rag_router
 
 app = FastAPI(title="Chatbot RAG Backend")
 
-# app.include_router(rag_router, prefix="/api/rag", tags=["RAG"])
 app.include_router(drive_router)
 
 
