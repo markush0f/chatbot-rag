@@ -5,13 +5,13 @@ from pathlib import Path
 from app.domain.drive.service import DriveService
 from googleapiclient.http import MediaIoBaseDownload
 
-# 📄 Loaders y módulos principales (mantienen langchain_community)
+# Loaders y módulos principales (mantienen langchain_community)
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
 
-# 🤖 Modelos y embeddings de OpenAI (paquete oficial)
+# Modelos y embeddings de OpenAI (paquete oficial)
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 
 
@@ -63,9 +63,9 @@ class RagService:
                 while not done:
                     status, done = downloader.next_chunk()
                     if status:
-                        print(f"⬇️  Descargando {name}: {int(status.progress() * 100)}%")
+                        print(f"Descargando {name}: {int(status.progress() * 100)}%")
 
-                print(f"✅ Archivo descargado: {name} ({mime_type})")
+                print(f"Archivo descargado: {name} ({mime_type})")
 
             except Exception as e:
                 error_msg = str(e)
@@ -73,10 +73,10 @@ class RagService:
                     print(f"⚠️ Sin permisos para el archivo {file_id}. Omitido.")
                 elif "File not found" in error_msg:
                     print(
-                        f"⚠️ Archivo no encontrado o ID incorrecto: {file_id}. Omitido."
+                        f"Archivo no encontrado o ID incorrecto: {file_id}. Omitido."
                     )
                 else:
-                    print(f"❌ Error inesperado al descargar {file_id}: {e}")
+                    print(f"Error inesperado al descargar {file_id}: {e}")
 
     # Crear embeddings temporales
     def create_embeddings(self):
@@ -96,7 +96,7 @@ class RagService:
             all_docs.extend(docs)
 
         if not all_docs:
-            raise ValueError("❌ No se encontraron documentos válidos para procesar.")
+            raise ValueError("No se encontraron documentos válidos para procesar.")
 
         splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         chunks = splitter.split_documents(all_docs)
@@ -116,7 +116,7 @@ class RagService:
 
         retriever = db.as_retriever(search_kwargs={"k": 4})
 
-        # 🔥 Modelo actualizado (usa gpt-4o-mini por defecto)
+        # Modelo actualizado (usa gpt-4o-mini por defecto)
         llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
 
         qa = RetrievalQA.from_chain_type(
@@ -136,9 +136,9 @@ class RagService:
         shutil.rmtree(self.index_path, ignore_errors=True)
         self.docs_path.mkdir(parents=True, exist_ok=True)
         self.index_path.mkdir(parents=True, exist_ok=True)
-        print("🧹 Limpieza completada (docs + embeddings).")
+        print("Limpieza completada (docs + embeddings).")
 
-    # 5️⃣ Flujo completo
+    # Flujo completo
     def run_pipeline(self, question: str, file_ids: list[str]):
         self.download_documents(file_ids)
         self.create_embeddings()
