@@ -1,6 +1,3 @@
-# create_domain.py
-# Scaffolding para arquitectura con main.py en la raíz y DB en app/core/db.py
-
 from pathlib import Path
 import re
 import sys
@@ -23,7 +20,7 @@ project_root = Path(".").resolve()
 app_dir = project_root / "app"
 domain_dir = app_dir / "domain" / domain
 routers_dir = app_dir / "routers"
-main_file = project_root / "main.py"
+main_file = project_root / "app/main.py"
 
 if not main_file.exists():
     fail(
