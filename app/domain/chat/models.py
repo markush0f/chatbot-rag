@@ -10,6 +10,11 @@ class Chat(SQLModel, table=True):
     __tablename__ = "chat"
 
     id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int = Field(
+        foreign_key="user.id",
+        nullable=False,
+        description="Reference to the user who owns this chat",
+    )
     title: Optional[str] = Field(
         default=None, description="Title or summary of the chat session"
     )
@@ -19,5 +24,6 @@ class Chat(SQLModel, table=True):
         description="Timestamp when the chat was created",
     )
 
-    # One-to-many relationship with Message
+    # Relationships
+    user: Optional["User"] = Relationship(back_populates="chats")
     messages: List["Message"] = Relationship(back_populates="chat")

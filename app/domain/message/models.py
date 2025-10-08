@@ -1,8 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from typing import Optional
-from sqlmodel import Relationship, SQLModel, Field
-from app.domain.
+from sqlmodel import SQLModel, Field, Relationship
 
 
 class Message(SQLModel, table=True):
@@ -26,5 +25,4 @@ class Message(SQLModel, table=True):
         description="Timestamp when the message was created",
     )
 
-    # Relationship back to Chat
-    chat: Optional[Chat] = Relationship(back_populates="messages")
+    chat: Optional["Chat"] = Relationship(back_populates="messages")

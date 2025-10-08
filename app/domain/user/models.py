@@ -1,10 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
-from typing import Optional
-from sqlmodel import SQLModel, Field
+from typing import Optional, List
+from sqlmodel import SQLModel, Field, Relationship
 
 
 class User(SQLModel, table=True):
+    """Represents a registered user in the system."""
+
     __tablename__ = "user"
 
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -30,3 +32,5 @@ class User(SQLModel, table=True):
         nullable=False,
         description="Last update timestamp",
     )
+
+    chats: List["Chat"] = Relationship(back_populates="user")
