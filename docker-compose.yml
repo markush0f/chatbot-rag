@@ -13,6 +13,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U markus"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - chatbot_net
 
@@ -20,12 +25,13 @@ services:
     image: adminer:latest
     container_name: chatbot_adminer
     restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy   
     environment:
       ADMINER_DEFAULT_SERVER: postgres
     ports:
       - "8081:8080"
-    depends_on:
-      - postgres
     networks:
       - chatbot_net
 
