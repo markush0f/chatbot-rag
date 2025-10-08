@@ -116,7 +116,7 @@ class RagService:
 
         retriever = db.as_retriever(search_kwargs={"k": 4})
 
-        # Modelo actualizado (usa gpt-4o-mini por defecto)
+        # Modelo 
         llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
 
         qa = RetrievalQA.from_chain_type(
