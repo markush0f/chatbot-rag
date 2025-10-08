@@ -70,7 +70,7 @@ class RagService:
             except Exception as e:
                 error_msg = str(e)
                 if "appNotAuthorizedToFile" in error_msg:
-                    print(f"⚠️ Sin permisos para el archivo {file_id}. Omitido.")
+                    print(f"Sin permisos para el archivo {file_id}. Omitido.")
                 elif "File not found" in error_msg:
                     print(
                         f"Archivo no encontrado o ID incorrecto: {file_id}. Omitido."
@@ -104,7 +104,7 @@ class RagService:
         embeddings = OpenAIEmbeddings()
         db = FAISS.from_documents(chunks, embeddings)
         db.save_local(str(self.index_path))
-        print("✅ Embeddings creados y almacenados temporalmente.")
+        print("Embeddings creados y almacenados temporalmente.")
         return db
 
     # Consultar el RAG
