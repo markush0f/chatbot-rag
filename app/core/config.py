@@ -16,7 +16,8 @@ class Settings(BaseModel):
     POSTGRES_DB: str = os.getenv("POSTGRES_DB", "Crecenia_chatbot")
     POSTGRES_HOST: str = os.getenv("POSTGRES_HOST", "localhost")
     POSTGRES_PORT: str = os.getenv("POSTGRES_PORT", "5432")
-
+    DB_LOGS: bool = os.getenv("DB_LOGS", False)
+    
     @property
     def DATABASE_URL(self) -> str:
         return (

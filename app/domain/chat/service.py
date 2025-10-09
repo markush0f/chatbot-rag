@@ -1,5 +1,7 @@
 from typing import List
 from sqlmodel import Session
+
+from app.domain.user.repository import UserRepository
 from .models import Chat
 from .repository import ChatRepository
 from .schemas import ChatCreate
@@ -7,6 +9,7 @@ from .schemas import ChatCreate
 class ChatService:
     def __init__(self, session: Session):
         self.repo = ChatRepository(session)
+        self.user_repo = UserRepository(session)
 
     def list_with_total(self, offset: int, limit: int) -> tuple[list[Chat], int]:
         items_seq = self.repo.list(offset=offset, limit=limit)
@@ -19,5 +22,5 @@ class ChatService:
         return self.repo.create(obj)
 
     def list_by_user(self, user_id: int) -> List[Chat]:
-        """Get all chats from a user."""
+        
         return self.repo.get_user_chats(user_id)

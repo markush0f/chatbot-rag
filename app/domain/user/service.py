@@ -2,11 +2,14 @@ from typing import List
 from sqlmodel import Session, select
 from fastapi import HTTPException, status
 
+from app.core.logging_decorator import log_class_methods
+
 from .models import User
 from .repository import UserRepository
 from .schemas import UserCreate
 
 
+@log_class_methods("DEBUG")
 class UserService:
     def __init__(self, session: Session):
         self.repo = UserRepository(session)
@@ -23,11 +26,13 @@ class UserService:
             select(User).where(User.email == data.email)
         ).first()
 
-        existing_user = self.repo.get_by_email(data.email)
+        existing_user = self.repo.get_by_email(data.email) or self.repo.get_by_username(
+            data.username
+        )
         if existing_user:
             raise HTTPException(
                 status_code=400,
-                detail="Email already registered.",
+                detail="Email or username already registered.",
             )
 
         obj = User.model_validate(data.model_dump())

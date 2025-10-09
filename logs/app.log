@@ -1,0 +1,103 @@
+[2025-10-09 19:43:52,914] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:47:22,702] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:49:35,793] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:51:26,326] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:51:33,138] [DEBUG] [logging_decorator.py:64 - wrapper()] ▶️ Executing: app.domain.user.service.UserService.create args=(UserCreate(username='string', email='string', full_name='string', role='user', is_active=True, password='string'),), kwargs={}
+[2025-10-09 19:51:33,219] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.user.service.UserService.create after 80.03 ms: 400: Email already registered.
+Traceback (most recent call last):
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/app/core/logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/app/domain/user/service.py", line 30, in create
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 400: Email already registered.
+[2025-10-09 19:51:44,033] [DEBUG] [logging_decorator.py:64 - wrapper()] ▶️ Executing: app.domain.user.service.UserService.create args=(UserCreate(username='string', email='abramian', full_name='string', role='user', is_active=True, password='string'),), kwargs={}
+[2025-10-09 19:51:44,041] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.user.service.UserService.create after 6.78 ms: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "ix_user_username"
+DETAIL:  Key (username)=(string) already exists.
+
+[SQL: INSERT INTO "user" (username, email, full_name, password, role, is_active, created_at, updated_at) VALUES (%(username)s, %(email)s, %(full_name)s, %(password)s, %(role)s, %(is_active)s, %(created_at)s, %(updated_at)s) RETURNING "user".id]
+[parameters: {'username': 'string', 'email': 'abramian', 'full_name': 'string', 'password': 'string', 'role': 'user', 'is_active': True, 'created_at': datetime.datetime(2025, 10, 9, 19, 51, 44, 37706), 'updated_at': datetime.datetime(2025, 10, 9, 19, 51, 44, 37712)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "ix_user_username"
+DETAIL:  Key (username)=(string) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/app/core/logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/app/domain/user/service.py", line 36, in create
+    return self.repo.create(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/app/domain/user/repository.py", line 20, in create
+    self.session.commit()
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4345, in flush
+    self._flush(objects)
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4441, in _flush
+    flush_context.execute()
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/mnt/c/Users/abram/Documents/crecenia/chatbot-rag/venv-linux/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "ix_user_username"
+DETAIL:  Key (username)=(string) already exists.
+
+[SQL: INSERT INTO "user" (username, email, full_name, password, role, is_active, created_at, updated_at) VALUES (%(username)s, %(email)s, %(full_name)s, %(password)s, %(role)s, %(is_active)s, %(created_at)s, %(updated_at)s) RETURNING "user".id]
+[parameters: {'username': 'string', 'email': 'abramian', 'full_name': 'string', 'password': 'string', 'role': 'user', 'is_active': True, 'created_at': datetime.datetime(2025, 10, 9, 19, 51, 44, 37706), 'updated_at': datetime.datetime(2025, 10, 9, 19, 51, 44, 37712)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-10-09 19:52:07,418] [DEBUG] [logging_decorator.py:64 - wrapper()] ▶️ Executing: app.domain.user.service.UserService.create args=(UserCreate(username='abramian', email='abramian', full_name='string', role='user', is_active=True, password='string'),), kwargs={}
+[2025-10-09 19:52:07,430] [DEBUG] [logging_decorator.py:72 - wrapper()] ✅ app.domain.user.service.UserService.create completed in 10.32 ms
+[2025-10-09 19:53:00,969] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:53:53,086] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:54:43,725] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 19:55:33,622] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
