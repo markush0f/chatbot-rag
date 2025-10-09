@@ -2,12 +2,13 @@ from typing import List
 from fastapi import HTTPException
 from sqlmodel import Session
 
+from app.core.logging_decorator import log_class_methods
 from app.domain.user.repository import UserRepository
 from .models import Chat
 from .repository import ChatRepository
 from .schemas import ChatCreate
 
-
+@log_class_methods("DEBUG")
 class ChatService:
     def __init__(self, session: Session):
         self.repo = ChatRepository(session)
@@ -27,6 +28,6 @@ class ChatService:
         if not self.user_repo.get_by_id(user_id):
             raise HTTPException(
                 status_code=404,
-                detail="User not found=.",
+                detail="User not found.",
             )
         return self.repo.get_user_chats(user_id)

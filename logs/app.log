@@ -101,3 +101,8 @@ DETAIL:  Key (username)=(string) already exists.
 [2025-10-09 19:53:53,086] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-09 19:54:43,725] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-09 19:55:33,622] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 20:48:02,995] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 20:49:33,063] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 20:51:48,585] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-09 20:51:48,618] [DEBUG] [logging_decorator.py:64 - wrapper()] ▶️ Executing: app.domain.user.service.UserService.create args=(UserCreate(username='Markus', email='abramianmedina@gmail.com', full_name='Markus Abramian Medina', role='user', is_active=True, password='1234'),), kwargs={}
+[2025-10-09 20:51:48,699] [DEBUG] [logging_decorator.py:72 - wrapper()] ✅ app.domain.user.service.UserService.create completed in 80.11 ms
