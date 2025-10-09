@@ -1,4 +1,5 @@
 from typing import List
+from fastapi import HTTPException
 from sqlmodel import Session
 
 from app.domain.user.repository import UserRepository
@@ -23,5 +24,9 @@ class ChatService:
         return self.repo.create(obj)
 
     def list_by_user(self, user_id: int) -> List[Chat]:
-
+        if not self.user_repo.get_by_id(user_id):
+            raise HTTPException(
+                status_code=404,
+                detail="User not found=.",
+            )
         return self.repo.get_user_chats(user_id)

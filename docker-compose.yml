@@ -17,21 +17,25 @@ services:
       test: ["CMD-SHELL", "pg_isready -U markus"]
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
     networks:
       - chatbot_net
 
-  adminer:
-    image: adminer:latest
-    container_name: chatbot_adminer
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: chatbot_pgadmin
     restart: always
     depends_on:
       postgres:
-        condition: service_healthy   
+        condition: service_healthy   # ✅ Ensures pgAdmin waits for Postgres
     environment:
-      ADMINER_DEFAULT_SERVER: postgres
+      PGADMIN_DEFAULT_EMAIL: admin@crecenia.ai
+      PGADMIN_DEFAULT_PASSWORD: 1234
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
-      - "8081:8080"
+      - "8081:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
     networks:
       - chatbot_net
 
@@ -41,3 +45,4 @@ networks:
 
 volumes:
   postgres_data:
+  pgadmin_data:
