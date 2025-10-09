@@ -5,8 +5,12 @@ from alembic import context
 from sqlmodel import SQLModel
 from app.core.database import engine
 from app.core.config import settings
+from app.domain.chat.models import Chat
+from app.domain.message.models import Message
+from app.domain.user.models import User
 
-# Interpretar el archivo de configuración de logging de Alembic
+
+
 config = context.config
 fileConfig(config.config_file_name)
 

@@ -1,15 +1,24 @@
-from __future__ import annotations
 from typing import Optional, List
 from sqlmodel import SQLModel
 
+
 class UserBase(SQLModel):
-    pass  # añade campos compartidos aquí
+    username: str
+    email: str
+    full_name: Optional[str] = None
+    role: str = "user"
+    is_active: bool = True
+
 
 class UserCreate(UserBase):
-    pass  # campos requeridos para crear
+    password: str 
+
 
 class UserRead(UserBase):
     id: int
+    created_at: str
+    updated_at: str
+
 
 class UserPage(SQLModel):
     total: int

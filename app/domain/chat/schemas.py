@@ -1,15 +1,20 @@
-from __future__ import annotations
 from typing import Optional, List
 from sqlmodel import SQLModel
 
+
 class ChatBase(SQLModel):
-    pass  # añade campos compartidos aquí
+    title: Optional[str] = None
+
 
 class ChatCreate(ChatBase):
-    pass  # campos requeridos para crear
+    user_id: int
+
 
 class ChatRead(ChatBase):
     id: int
+    user_id: int
+    created_at: str
+
 
 class ChatPage(SQLModel):
     total: int

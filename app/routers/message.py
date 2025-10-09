@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
-from app.core.db import get_session
+from app.core.database import get_session
 from app.domain.message.service import MessageService
 from app.domain.message.schemas import MessageCreate, MessageRead, MessagePage
 

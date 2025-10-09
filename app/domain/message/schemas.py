@@ -1,15 +1,21 @@
-from __future__ import annotations
-from typing import Optional, List
+from typing import List
 from sqlmodel import SQLModel
 
+
 class MessageBase(SQLModel):
-    pass  # añade campos compartidos aquí
+    sender: str
+    content: str
+
 
 class MessageCreate(MessageBase):
-    pass  # campos requeridos para crear
+    chat_id: int
+
 
 class MessageRead(MessageBase):
     id: int
+    chat_id: int
+    created_at: str
+
 
 class MessagePage(SQLModel):
     total: int

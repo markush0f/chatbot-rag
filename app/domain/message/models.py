@@ -1,7 +1,8 @@
-from __future__ import annotations
 from datetime import datetime
 from typing import Optional
 from sqlmodel import SQLModel, Field, Relationship
+
+from app.domain.chat.models import Chat
 
 
 class Message(SQLModel, table=True):
@@ -10,11 +11,6 @@ class Message(SQLModel, table=True):
     __tablename__ = "message"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    chat_id: int = Field(
-        foreign_key="chat.id",
-        nullable=False,
-        description="Reference to the parent chat session",
-    )
     sender: str = Field(
         nullable=False, description="Indicates the sender (user or bot)"
     )
@@ -25,4 +21,9 @@ class Message(SQLModel, table=True):
         description="Timestamp when the message was created",
     )
 
-    chat: Optional["Chat"] = Relationship(back_populates="messages")
+    chat_id: int = Field(
+        foreign_key="chat.id",
+        nullable=False,
+        description="Reference to the parent chat session",
+    )
+    chat: Chat | None = Relationship(back_populates="messages")

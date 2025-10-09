@@ -1,4 +1,3 @@
-from __future__ import annotations
 from datetime import datetime
 from typing import Optional, List
 from sqlmodel import SQLModel, Field, Relationship
@@ -33,4 +32,4 @@ class User(SQLModel, table=True):
         description="Last update timestamp",
     )
 
-    chats: List["Chat"] = Relationship(back_populates="user")
+    chats: list["Chat"] = Relationship(back_populates="user")
