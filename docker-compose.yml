@@ -27,7 +27,7 @@ services:
     restart: always
     depends_on:
       postgres:
-        condition: service_healthy   # ✅ Ensures pgAdmin waits for Postgres
+        condition: service_healthy  
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@crecenia.ai
       PGADMIN_DEFAULT_PASSWORD: 1234
