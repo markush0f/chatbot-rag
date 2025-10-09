@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import List, Sequence
 from sqlmodel import Session, select
 from sqlalchemy import func
 from .models import Chat
@@ -20,3 +20,8 @@ class ChatRepository:
         self.session.commit()
         self.session.refresh(obj)
         return obj
+    
+    def get_user_chats(self, user_id: int) -> List[Chat]:
+        statement = select(Chat).where(Chat.user_id == user_id)
+        results = self.session.exec(statement)
+        return results.all()

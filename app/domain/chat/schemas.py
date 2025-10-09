@@ -12,8 +12,8 @@ class ChatCreate(ChatBase):
 
 class ChatRead(ChatBase):
     id: int
-    user_id: int
-    created_at: str
+    # user_id: int
+    # created_at: str
 
 
 class ChatPage(SQLModel):

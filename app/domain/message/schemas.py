@@ -14,7 +14,7 @@ class MessageCreate(MessageBase):
 class MessageRead(MessageBase):
     id: int
     chat_id: int
-    created_at: str
+    # created_at: str
 
 
 class MessagePage(SQLModel):

@@ -15,6 +15,9 @@ class ChatService:
         return items, total
 
     def create(self, data: ChatCreate) -> Chat:
-        # CORREGIDO: convertir schema a dict
         obj = Chat.model_validate(data.model_dump())
         return self.repo.create(obj)
+
+    def list_by_user(self, user_id: int) -> List[Chat]:
+        """Get all chats from a user."""
+        return self.repo.get_user_chats(user_id)

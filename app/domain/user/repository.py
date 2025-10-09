@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import Optional, Sequence
 from sqlmodel import Session, select
 from sqlalchemy import func
 from .models import User
@@ -20,3 +20,7 @@ class UserRepository:
         self.session.commit()
         self.session.refresh(obj)
         return obj
+
+    def get_by_email(self, email: str) -> Optional[User]:
+        statement = select(User).where(User.email == email)
+        return self.session.exec(statement).first()

@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import List, Sequence
 from sqlmodel import Session, select
 from sqlalchemy import func
 from .models import Message
@@ -20,3 +20,21 @@ class MessageRepository:
         self.session.commit()
         self.session.refresh(obj)
         return obj
+
+    def list_by_chat(self, chat_id: int, offset: int = 0, limit: int = 20) -> List[Message]:
+        """Devuelve mensajes de un chat con paginación."""
+        statement = (
+            select(Message)
+            .where(Message.chat_id == chat_id)
+            .order_by(Message.created_at.asc())
+            .offset(offset)
+            .limit(limit)
+        )
+        results = self.session.exec(statement)
+        return results.all()
+
+    def count_by_chat(self, chat_id: int) -> int:
+        """Cuenta los mensajes totales del chat."""
+        statement = select(Message).where(Message.chat_id == chat_id)
+        results = self.session.exec(statement)
+        return len(results.all())
