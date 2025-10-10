@@ -36,7 +36,7 @@ project_root = Path(".").resolve()
 app_dir = project_root / "app"
 domain_dir = app_dir / "domain" / domain
 routers_dir = app_dir / "routers"
-main_file = app_dir / "app/main.py"
+main_file = app_dir / "main.py"
 
 if not main_file.exists():
     fail(
