@@ -1,4 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    HTTPException,
+    Path,
+    Query,
+    UploadFile,
+)
 from sqlmodel import Session
 from app.core.database import get_session
 from app.domain.document.service import DocumentService
@@ -39,10 +48,40 @@ def get_document(id: int, svc: DocumentService = Depends(get_service)):
 
 
 @router.post("", response_model=DocumentRead)
-def create_document(
-    payload: DocumentCreate, svc: DocumentService = Depends(get_service)
+async def create_document(
+    title: str = Form(...),
+    description: str = Form(None),
+    owner_id: int = Form(None),
+    file: UploadFile = File(...),
+    svc: DocumentService = Depends(get_service),
 ):
-    return svc.create(payload)
+    """
+    Uploads a document file and automatically triggers text extraction,
+    chunking, and embedding generation.
+    """
+    try:
+        # Save uploaded file
+        from pathlib import Path
+
+        docs_path = Path("data/docs")
+        docs_path.mkdir(parents=True, exist_ok=True)
+
+        file_path = docs_path / file.filename
+        with open(file_path, "wb") as f:
+            f.write(await file.read())
+
+        # Build payload for DocumentService
+        payload = DocumentCreate(
+            title=title,
+            description=description,
+            owner_id=owner_id,
+            source=str(file_path),
+        )
+
+        return svc.create(payload)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.put("/<built-in function id>", response_model=DocumentRead)

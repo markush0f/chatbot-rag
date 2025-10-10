@@ -1,8 +1,9 @@
 from typing import List, Optional, Any
 from sqlmodel import Session
 
-from app.utils.chunking import split_text, split_text_semantic
-from app.utils.file_loader import load_text, load_text_file
+from app.domain.rag.embedding_service import EmbeddingService
+from app.utils.chunking import split_text_semantic
+from app.utils.file_loader import load_text
 from .models import Document, DocumentChunk
 from .repository import DocumentRepository
 from .schemas import DocumentCreate, DocumentUpdate
@@ -10,7 +11,10 @@ from .schemas import DocumentCreate, DocumentUpdate
 
 class DocumentService:
     def __init__(self, session: Session):
+        self.session = session
         self.repo = DocumentRepository(session)
+        self.embedding_service = EmbeddingService()
+
 
     def list_with_total(
         self, offset: int, limit: int, filters: dict[str, Any] | None = None
@@ -55,7 +59,7 @@ class DocumentService:
         self.session.refresh(document)
 
         return document
-    
+
     def update(self, id: int, data: DocumentUpdate) -> Optional[Document]:
         obj = self.repo.get(id)
         if not obj:

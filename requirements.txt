@@ -17,3 +17,4 @@ sqlmodel
 pymupdf
 python-docx 
 requests
+python-multipart

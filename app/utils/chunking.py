@@ -2,15 +2,24 @@ from __future__ import annotations
 from typing import List
 import re
 
-# Optional dependency: use NLTK for accurate sentence splitting if available
+# ============================================================
+#       Try to import NLTK and ensure required models exist
+# ============================================================
 try:
     import nltk
 
-    nltk.download("punkt", quiet=True)
+    # Automatically download required resources if not found
+    for resource in ["punkt", "punkt_tab"]:
+        try:
+            nltk.data.find(f"tokenizers/{resource}")
+        except LookupError:
+            nltk.download(resource, quiet=True)
+
     from nltk.tokenize import sent_tokenize
 
     NLTK_AVAILABLE = True
-except ImportError:
+except Exception:
+    # NLTK not available or resource download failed
     NLTK_AVAILABLE = False
 
 
