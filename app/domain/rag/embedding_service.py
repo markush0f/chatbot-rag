@@ -1,4 +1,5 @@
 import shutil
+from typing import List
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -10,6 +11,7 @@ class EmbeddingService:
     def __init__(self):
         self.index_path = Path("data/faiss_index")
         self.index_path.mkdir(parents=True, exist_ok=True)
+        self.embedding_model = OpenAIEmbeddings()
 
     def create_embeddings(self, docs_path: Path):
         all_docs = []
@@ -36,6 +38,17 @@ class EmbeddingService:
         return FAISS.load_local(
             str(self.index_path), embeddings, allow_dangerous_deserialization=True
         )
+
+    def embed_text(self, text: str) -> List[float]:
+        """
+        Generates an embedding for a single text input using the same model.
+
+        Args:
+            text (str): Input text or chunk.
+        Returns:
+            List[float]: Embedding vector.
+        """
+        return self.embedding_model.embed_query(text)
 
     def cleanup(self):
         shutil.rmtree(self.index_path, ignore_errors=True)

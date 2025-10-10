@@ -1,6 +1,12 @@
 from __future__ import annotations
+import logging
 from typing import List
 import re
+from app.core.logging_config import setup_logging
+
+setup_logging()
+logger = logging.getLogger("app")
+
 
 # ============================================================
 #       Try to import NLTK and ensure required models exist
