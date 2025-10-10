@@ -8,7 +8,7 @@ from app.core.config import settings
 from app.domain.chat.models import Chat
 from app.domain.message.models import Message
 from app.domain.user.models import User
-
+from app.domain.document.models import Document, DocumentChunk
 
 
 config = context.config

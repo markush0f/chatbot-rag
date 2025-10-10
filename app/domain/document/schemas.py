@@ -1,21 +1,31 @@
-
+from __future__ import annotations
+from datetime import datetime
 from typing import Optional, List
 from sqlmodel import SQLModel
 
+
 class DocumentBase(SQLModel):
-    name: Optional[str] = None
-    email: Optional[str] = None
-    status: Optional[str] = None
+    title: str
+    description: Optional[str] = None
+    source: Optional[str] = None
+    owner_id: Optional[int] = None
+
 
 class DocumentCreate(DocumentBase):
-    name: str
+    pass
+
 
 class DocumentRead(DocumentBase):
     id: int
-    name: str
+    created_at: datetime
+    updated_at: datetime
 
-class DocumentUpdate(DocumentBase):
-    pass
+
+class DocumentUpdate(SQLModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    source: Optional[str] = None
+
 
 class DocumentPage(SQLModel):
     total: int

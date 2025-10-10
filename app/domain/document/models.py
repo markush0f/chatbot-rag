@@ -1,6 +1,6 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional, List
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import JSON, Column, SQLModel, Field, Relationship
 
 
 class Document(SQLModel, table=True):
@@ -20,14 +20,12 @@ class Document(SQLModel, table=True):
         default=None, description="Identifier of the user who uploaded the document"
     )
     created_at: datetime = Field(
-        default_factory=datetime.utcnow,
+        default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
-        description="Timestamp of when the document was created",
     )
     updated_at: datetime = Field(
-        default_factory=datetime.utcnow,
+        default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
-        description="Timestamp of the last document update",
     )
 
     # Relationship with document chunks (embeddings)
@@ -50,14 +48,14 @@ class DocumentChunk(SQLModel, table=True):
         description="Reference to the parent document",
     )
     content: str = Field(nullable=False, description="Text content of the chunk")
-    embedding: List[float] = Field(
-        sa_column_kwargs={"type_": "vector(1536)"},
+    embedding: list[float] | None = Field(
+        default=None,
+        sa_column=Column(JSON),
         description="Embedding vector generated from the chunk",
     )
     created_at: datetime = Field(
-        default_factory=datetime.utcnow,
+        default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
-        description="Timestamp of when the chunk was created",
     )
 
     # Relationship back to document

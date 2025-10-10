@@ -14,3 +14,6 @@ google-api-python-client
 docx2txt
 pypdf
 sqlmodel
+pymupdf
+python-docx 
+requests
