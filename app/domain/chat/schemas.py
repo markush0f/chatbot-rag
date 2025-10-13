@@ -4,7 +4,7 @@ from sqlmodel import SQLModel
 
 class ChatBase(SQLModel):
     title: Optional[str] = None
-    document_ids: Optional[List[str]] = None
+    document_ids: Optional[List[int]] = None
 
 
 

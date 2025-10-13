@@ -75,6 +75,14 @@ class ChatService:
 
         # Retrieve document chunks using document_id
         chunks = self.document_repo.get_chunks_by_documents(chat.document_ids)
+        if not chunks:
+            return self.message_service.create(
+                MessageCreate(
+                    chat_id=chat_id,
+                    sender="assistant",
+                    content="No content found for the selected documents.",
+                )
+    )
 
         if not chunks:
             return self.message_service.create(
