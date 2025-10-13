@@ -27,10 +27,10 @@ class Chat(SQLModel, table=True):
         description="Reference to the user who owns this chat",
     )
 
-    document_ids: list[str] | None = Field(
+    document_ids: list[int] | None = Field(
         default=None,
         sa_column=Column(JSON),
-        description="List of document IDs from Google Drive associated with this chat",
+        description="List of document IDs associated with this chat",
     )
 
     user: User | None = Relationship(back_populates="chats")

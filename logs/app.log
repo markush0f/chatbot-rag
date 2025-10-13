@@ -756,3 +756,96 @@ DETAIL:  Key (username)=(string) already exists.
 [2025-10-12 13:04:08,767] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-12 13:04:15,271] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-12 13:04:15,554] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:27:48,910] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:27:49,488] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:28:00,986] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.chat.service.ChatService.list_with_total after 0.02 ms: 'ChatService' object has no attribute 'repo'
+Traceback (most recent call last):
+  File "C:\Users\abram\Documents\chatbot-rag\app\core\logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+  File "C:\Users\abram\Documents\chatbot-rag\app\domain\chat\service.py", line 34, in list_with_total
+    items_seq = self.repo.list(offset=offset, limit=limit)
+                ^^^^^^^^^
+AttributeError: 'ChatService' object has no attribute 'repo'
+[2025-10-13 23:28:26,756] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:28:27,045] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:28:31,717] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:28:32,000] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:03,517] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.chat.service.ChatService.ask after 0.01 ms: 'ChatService' object has no attribute '_add_message'
+Traceback (most recent call last):
+  File "C:\Users\abram\Documents\chatbot-rag\app\core\logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+  File "C:\Users\abram\Documents\chatbot-rag\app\domain\chat\service.py", line 55, in ask
+    user_msg = self._add_message(chat_id, "user", question)
+               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ChatService' object has no attribute '_add_message'
+[2025-10-13 23:29:16,503] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:16,785] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:21,558] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:21,834] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:39,165] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:39,515] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:29:41,474] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.chat.service.ChatService.ask after 0.01 ms: MessageService.create() takes 2 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "C:\Users\abram\Documents\chatbot-rag\app\core\logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+  File "C:\Users\abram\Documents\chatbot-rag\app\domain\chat\service.py", line 55, in ask
+    self.message_service.create(chat_id, "user", question)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MessageService.create() takes 2 positional arguments but 4 were given
+[2025-10-13 23:30:52,490] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:30:52,803] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:30:57,417] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:30:57,734] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:31:42,556] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:31:42,877] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:31:47,313] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:31:47,591] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:31:54,299] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:31:54,598] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:32:03,665] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:32:04,000] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:32:08,595] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:32:08,880] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:32:20,868] [DEBUG] [_base_client.py:482 - _build_request()] Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-fd558116-70de-4474-9214-b27804f30692', 'post_parser': <function Embeddings.create.<locals>.parser at 0x000001AE16077240>, 'json_data': {'input': [[5876, 68, 1560, 38893, 30]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+[2025-10-13 23:32:20,895] [DEBUG] [_base_client.py:978 - request()] Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+[2025-10-13 23:32:20,895] [DEBUG] [_trace.py:47 - trace()] connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+[2025-10-13 23:32:21,050] [DEBUG] [_trace.py:47 - trace()] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE15F6F770>
+[2025-10-13 23:32:21,051] [DEBUG] [_trace.py:47 - trace()] start_tls.started ssl_context=<ssl.SSLContext object at 0x000001AE15A836E0> server_hostname='api.openai.com' timeout=None
+[2025-10-13 23:32:21,085] [DEBUG] [_trace.py:47 - trace()] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE16078A50>
+[2025-10-13 23:32:21,085] [DEBUG] [_trace.py:47 - trace()] send_request_headers.started request=<Request [b'POST']>
+[2025-10-13 23:32:21,085] [DEBUG] [_trace.py:47 - trace()] send_request_headers.complete
+[2025-10-13 23:32:21,085] [DEBUG] [_trace.py:47 - trace()] send_request_body.started request=<Request [b'POST']>
+[2025-10-13 23:32:21,085] [DEBUG] [_trace.py:47 - trace()] send_request_body.complete
+[2025-10-13 23:32:21,085] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.started request=<Request [b'POST']>
+[2025-10-13 23:32:22,047] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 13 Oct 2025 22:32:12 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002-v2'), (b'openai-organization', b'user-8adwua04dismr8hiw4ywtfpm'), (b'openai-processing-ms', b'45'), (b'openai-project', b'proj_OfpXUE2umFtFZX4ebQwNNJP2'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-864fbf466c-xww9r'), (b'x-envoy-upstream-service-time', b'346'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999995'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_f58f2ef2e51548529b2d98c901331f32'), (b'x-openai-proxy-wasm', b'v0.1'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=qXcCsWgos7skW_Qtinc.OHITKZNohojSnzjh_pg0Nkk-1760394732-1.0.1.1-X3oPOwUyxosYlwko5v2xOiYSl9gwfsvUie6VBLZ30cMRqIA8JOyHAXZ0SS2vGYRZT4p4rNeoFIdlO80JpEWW6R5gyn3y2Emictk9kF4I3P0; path=/; expires=Mon, 13-Oct-25 23:02:12 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Lp1klq_pFNQEYe_368cBL47DNw1Afffk5cXmEoAy6VE-1760394732457-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'98e24aa00cf0cc6c-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[2025-10-13 23:32:22,048] [INFO] [_client.py:1025 - _send_single_request()] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[2025-10-13 23:32:22,048] [DEBUG] [_trace.py:47 - trace()] receive_response_body.started request=<Request [b'POST']>
+[2025-10-13 23:32:22,048] [DEBUG] [_trace.py:47 - trace()] receive_response_body.complete
+[2025-10-13 23:32:22,048] [DEBUG] [_trace.py:47 - trace()] response_closed.started
+[2025-10-13 23:32:22,049] [DEBUG] [_trace.py:47 - trace()] response_closed.complete
+[2025-10-13 23:32:22,049] [DEBUG] [_base_client.py:1016 - request()] HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Mon, 13 Oct 2025 22:32:12 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002-v2'), ('openai-organization', 'user-8adwua04dismr8hiw4ywtfpm'), ('openai-processing-ms', '45'), ('openai-project', 'proj_OfpXUE2umFtFZX4ebQwNNJP2'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-864fbf466c-xww9r'), ('x-envoy-upstream-service-time', '346'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999995'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_f58f2ef2e51548529b2d98c901331f32'), ('x-openai-proxy-wasm', 'v0.1'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=qXcCsWgos7skW_Qtinc.OHITKZNohojSnzjh_pg0Nkk-1760394732-1.0.1.1-X3oPOwUyxosYlwko5v2xOiYSl9gwfsvUie6VBLZ30cMRqIA8JOyHAXZ0SS2vGYRZT4p4rNeoFIdlO80JpEWW6R5gyn3y2Emictk9kF4I3P0; path=/; expires=Mon, 13-Oct-25 23:02:12 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Lp1klq_pFNQEYe_368cBL47DNw1Afffk5cXmEoAy6VE-1760394732457-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '98e24aa00cf0cc6c-MAD'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+[2025-10-13 23:32:22,049] [DEBUG] [_base_client.py:1024 - request()] request_id: req_f58f2ef2e51548529b2d98c901331f32
+[2025-10-13 23:32:22,050] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.chat.service.ChatService.ask after 1336.56 ms: source
+Traceback (most recent call last):
+  File "C:\Users\abram\Documents\chatbot-rag\app\core\logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+  File "C:\Users\abram\Documents\chatbot-rag\app\domain\chat\service.py", line 69, in ask
+    stmt = select(DocumentChunk).where(DocumentChunk.source.in_(chat.document_ids))
+                                       ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\pydantic\_internal\_model_construction.py", line 289, in __getattr__
+    raise AttributeError(item)
+AttributeError: source
+[2025-10-13 23:33:54,051] [DEBUG] [_trace.py:47 - trace()] close.started
+[2025-10-13 23:33:54,052] [DEBUG] [_trace.py:47 - trace()] close.complete
+[2025-10-13 23:33:56,681] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:33:57,051] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:41:31,618] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:41:31,943] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:41:38,874] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:41:39,167] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:41:43,753] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:41:44,029] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:42:28,300] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:42:28,606] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:43:49,825] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-13 23:43:56,551] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.

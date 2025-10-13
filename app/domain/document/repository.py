@@ -1,18 +1,16 @@
-
+from ast import List
 from typing import Sequence, Optional, Any
 from sqlmodel import Session, select
 from sqlalchemy import func
-from .models import Document
+from .models import Document, DocumentChunk
+
 
 class DocumentRepository:
     def __init__(self, session: Session):
         self.session = session
 
     def list_with_filters(
-        self, 
-        offset: int = 0, 
-        limit: int = 50,
-        filters: dict[str, Any] | None = None
+        self, offset: int = 0, limit: int = 50, filters: dict[str, Any] | None = None
     ) -> Sequence[Document]:
         stmt = select(Document)
         if filters:
@@ -50,3 +48,14 @@ class DocumentRepository:
     def delete(self, obj: Document) -> None:
         self.session.delete(obj)
         self.session.commit()
+
+    def get_chunks_by_documents(self, document_ids: List[int]) -> list[DocumentChunk]:
+        """
+        Retrieve all chunks belonging to the given list of documents.
+        Used by ChatService for contextual question answering.
+        """
+        if not document_ids:
+            return []
+
+        stmt = select(DocumentChunk).where(DocumentChunk.document_id.in_(document_ids))
+        return self.session.exec(stmt).all()

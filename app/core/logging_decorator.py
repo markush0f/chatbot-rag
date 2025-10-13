@@ -61,7 +61,7 @@ def log_class_methods(level: str = "INFO"):
                 func_name = f"{cls.__module__}.{cls.__name__}.{__name}"
 
                 # Log start
-                log_func(f"▶️ Executing: {func_name} args={args}, kwargs={kwargs}")
+                log_func(f"Executing: {func_name} args={args}, kwargs={kwargs}")
                 start_time = time.perf_counter()
 
                 try:
@@ -69,7 +69,7 @@ def log_class_methods(level: str = "INFO"):
                     elapsed = (time.perf_counter() - start_time) * 1000
 
                     # Log successful completion
-                    log_func(f"✅ {func_name} completed in {elapsed:.2f} ms")
+                    log_func(f"{func_name} completed in {elapsed:.2f} ms")
                     return result
 
                 except Exception as e:
