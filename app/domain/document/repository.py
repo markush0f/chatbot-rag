@@ -49,7 +49,7 @@ class DocumentRepository:
         self.session.delete(obj)
         self.session.commit()
 
-    def get_chunks_by_documents(self, document_ids: List[int]) -> list[DocumentChunk]:
+    def get_chunks_by_documents(self, document_ids: list[int]) -> list[DocumentChunk]:
         """
         Retrieve all chunks belonging to the given list of documents.
         Used by ChatService for contextual question answering.
