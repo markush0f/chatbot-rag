@@ -1231,3 +1231,191 @@ WHERE document_chunk.document_id IN (%(document_id_1_1)s)]
 [2025-10-14 02:50:22,847] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-14 02:50:41,002] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-14 02:50:41,364] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-14 02:50:59,571] [DEBUG] [logging_decorator.py:64 - wrapper()] Executing: app.domain.chat.service.ChatService.ask args=(2, 'Cuales son los tipos de tipografia que hay?'), kwargs={}
+[2025-10-14 02:50:59,725] [DEBUG] [_base_client.py:482 - _build_request()] Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-12e7e4d2-08e9-4a01-9a56-acf28d328e5a', 'post_parser': <function Embeddings.create.<locals>.parser at 0x000001EAC26172E0>, 'json_data': {'input': [[34, 41852, 4538, 2537, 64962, 409, 11813, 50901, 1744, 18137, 30]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+[2025-10-14 02:50:59,754] [DEBUG] [_base_client.py:978 - request()] Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+[2025-10-14 02:50:59,754] [DEBUG] [_trace.py:47 - trace()] connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+[2025-10-14 02:50:59,844] [DEBUG] [_trace.py:47 - trace()] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001EAC25D2F90>
+[2025-10-14 02:50:59,845] [DEBUG] [_trace.py:47 - trace()] start_tls.started ssl_context=<ssl.SSLContext object at 0x000001EAC2097770> server_hostname='api.openai.com' timeout=None
+[2025-10-14 02:50:59,877] [DEBUG] [_trace.py:47 - trace()] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001EAC2620E10>
+[2025-10-14 02:50:59,877] [DEBUG] [_trace.py:47 - trace()] send_request_headers.started request=<Request [b'POST']>
+[2025-10-14 02:50:59,877] [DEBUG] [_trace.py:47 - trace()] send_request_headers.complete
+[2025-10-14 02:50:59,877] [DEBUG] [_trace.py:47 - trace()] send_request_body.started request=<Request [b'POST']>
+[2025-10-14 02:50:59,877] [DEBUG] [_trace.py:47 - trace()] send_request_body.complete
+[2025-10-14 02:50:59,877] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.started request=<Request [b'POST']>
+[2025-10-14 02:51:00,560] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Oct 2025 01:50:51 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002-v2'), (b'openai-organization', b'user-8adwua04dismr8hiw4ywtfpm'), (b'openai-processing-ms', b'45'), (b'openai-project', b'proj_OfpXUE2umFtFZX4ebQwNNJP2'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-5d56f9479f-czngh'), (b'x-envoy-upstream-service-time', b'236'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999989'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_60bbb06d3de8408a90759ee2ea2c846c'), (b'x-openai-proxy-wasm', b'v0.1'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=QGA3Ivrhkr85MmHc37OX4h1vklY3hzEL_cjgg_A2MfA-1760406651-1.0.1.1-JR85oo5L2AH9c5IcotVnp_6VxbKaGOiekMSsfImV6RKxuaocYZLXi3obdaxbh6oOb1aWZupeE5B1xUFffeijZjQ3I0TsUFN0iqu7yn0v_Hc; path=/; expires=Tue, 14-Oct-25 02:20:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=wcL75N.syEMdzOoG0HyWIS6P6BVQOeCwSOt2CsjNVzg-1760406651543-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'98e36da01a4e034d-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[2025-10-14 02:51:00,560] [INFO] [_client.py:1025 - _send_single_request()] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[2025-10-14 02:51:00,560] [DEBUG] [_trace.py:47 - trace()] receive_response_body.started request=<Request [b'POST']>
+[2025-10-14 02:51:00,561] [DEBUG] [_trace.py:47 - trace()] receive_response_body.complete
+[2025-10-14 02:51:00,561] [DEBUG] [_trace.py:47 - trace()] response_closed.started
+[2025-10-14 02:51:00,561] [DEBUG] [_trace.py:47 - trace()] response_closed.complete
+[2025-10-14 02:51:00,561] [DEBUG] [_base_client.py:1016 - request()] HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Oct 2025 01:50:51 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002-v2'), ('openai-organization', 'user-8adwua04dismr8hiw4ywtfpm'), ('openai-processing-ms', '45'), ('openai-project', 'proj_OfpXUE2umFtFZX4ebQwNNJP2'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-5d56f9479f-czngh'), ('x-envoy-upstream-service-time', '236'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999989'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_60bbb06d3de8408a90759ee2ea2c846c'), ('x-openai-proxy-wasm', 'v0.1'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=QGA3Ivrhkr85MmHc37OX4h1vklY3hzEL_cjgg_A2MfA-1760406651-1.0.1.1-JR85oo5L2AH9c5IcotVnp_6VxbKaGOiekMSsfImV6RKxuaocYZLXi3obdaxbh6oOb1aWZupeE5B1xUFffeijZjQ3I0TsUFN0iqu7yn0v_Hc; path=/; expires=Tue, 14-Oct-25 02:20:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=wcL75N.syEMdzOoG0HyWIS6P6BVQOeCwSOt2CsjNVzg-1760406651543-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '98e36da01a4e034d-MAD'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+[2025-10-14 02:51:00,561] [DEBUG] [_base_client.py:1024 - request()] request_id: req_60bbb06d3de8408a90759ee2ea2c846c
+[2025-10-14 02:51:00,565] [ERROR] [logging_decorator.py:79 - wrapper()] Error in app.domain.chat.service.ChatService.ask after 993.73 ms: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "string"
+LINE 3: WHERE document_chunk.document_id IN ('string')
+                                             ^
+
+[SQL: SELECT document_chunk.id, document_chunk.document_id, document_chunk.content, document_chunk.embedding, document_chunk.created_at 
+FROM document_chunk 
+WHERE document_chunk.document_id IN (%(document_id_1_1)s)]
+[parameters: {'document_id_1_1': 'string'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+Traceback (most recent call last):
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: "string"
+LINE 3: WHERE document_chunk.document_id IN ('string')
+                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abram\Documents\chatbot-rag\app\core\logging_decorator.py", line 68, in wrapper
+    result = __method(self, *args, **kwargs)
+  File "C:\Users\abram\Documents\chatbot-rag\app\domain\chat\service.py", line 77, in ask
+    chunks = self.document_repo.get_chunks_by_documents(chat.document_ids)
+  File "C:\Users\abram\Documents\chatbot-rag\app\domain\document\repository.py", line 61, in get_chunks_by_documents
+    return self.session.exec(stmt).all()
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlmodel\orm\session.py", line 83, in exec
+    results = super().execute(
+        statement,
+    ...<4 lines>...
+        _add_event=_add_event,
+    )
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abram\Documents\chatbot-rag\venv-windows\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.DataError: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type integer: "string"
+LINE 3: WHERE document_chunk.document_id IN ('string')
+                                             ^
+
+[SQL: SELECT document_chunk.id, document_chunk.document_id, document_chunk.content, document_chunk.embedding, document_chunk.created_at 
+FROM document_chunk 
+WHERE document_chunk.document_id IN (%(document_id_1_1)s)]
+[parameters: {'document_id_1_1': 'string'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+[2025-10-14 02:51:59,666] [DEBUG] [logging_decorator.py:64 - wrapper()] Executing: app.domain.chat.service.ChatService.ask args=(6, 'Cuales son los tipos de tipografia que hay?'), kwargs={}
+[2025-10-14 02:51:59,674] [DEBUG] [_base_client.py:482 - _build_request()] Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-2c0d3161-fecf-4c5c-8ba0-fdc86ac1c206', 'post_parser': <function Embeddings.create.<locals>.parser at 0x000001EAC263CFE0>, 'json_data': {'input': [[34, 41852, 4538, 2537, 64962, 409, 11813, 50901, 1744, 18137, 30]], 'model': 'text-embedding-ada-002', 'encoding_format': 'base64'}}
+[2025-10-14 02:51:59,674] [DEBUG] [_base_client.py:978 - request()] Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+[2025-10-14 02:51:59,674] [DEBUG] [_trace.py:47 - trace()] connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+[2025-10-14 02:51:59,774] [DEBUG] [_trace.py:47 - trace()] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001EAC35E0CD0>
+[2025-10-14 02:51:59,774] [DEBUG] [_trace.py:47 - trace()] start_tls.started ssl_context=<ssl.SSLContext object at 0x000001EAC25970B0> server_hostname='api.openai.com' timeout=None
+[2025-10-14 02:51:59,806] [DEBUG] [_trace.py:47 - trace()] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001EAC3065E00>
+[2025-10-14 02:51:59,806] [DEBUG] [_trace.py:47 - trace()] send_request_headers.started request=<Request [b'POST']>
+[2025-10-14 02:51:59,806] [DEBUG] [_trace.py:47 - trace()] send_request_headers.complete
+[2025-10-14 02:51:59,806] [DEBUG] [_trace.py:47 - trace()] send_request_body.started request=<Request [b'POST']>
+[2025-10-14 02:51:59,807] [DEBUG] [_trace.py:47 - trace()] send_request_body.complete
+[2025-10-14 02:51:59,807] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.started request=<Request [b'POST']>
+[2025-10-14 02:52:00,448] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Oct 2025 01:51:51 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-model', b'text-embedding-ada-002-v2'), (b'openai-organization', b'user-8adwua04dismr8hiw4ywtfpm'), (b'openai-processing-ms', b'40'), (b'openai-project', b'proj_OfpXUE2umFtFZX4ebQwNNJP2'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'via', b'envoy-router-864fbf466c-5pc28'), (b'x-envoy-upstream-service-time', b'221'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999989'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_c4b56450de04492197e72c21528cd1aa'), (b'x-openai-proxy-wasm', b'v0.1'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=R3avW5rtnmJq8MuStUSuoNpX7OmSIoLuRCmd9Tkxf2E-1760406711-1.0.1.1-4tTYfuLwo1MiYekgUE3rKp_REo7GTBHHk3KOvErIg0Ax4Suu_YSsD0kSFaMYlTB.GTLN61ZeNLbJL3IFXGeovW7InR3buqRVtYK8Jix9xaI; path=/; expires=Tue, 14-Oct-25 02:21:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=XJdHniZzL0AAxlQLN_GqL2xz5Ah6jeftTXP.FuX8_NM-1760406711435-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'98e36f16ab28314b-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[2025-10-14 02:52:00,449] [INFO] [_client.py:1025 - _send_single_request()] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[2025-10-14 02:52:00,449] [DEBUG] [_trace.py:47 - trace()] receive_response_body.started request=<Request [b'POST']>
+[2025-10-14 02:52:00,450] [DEBUG] [_trace.py:47 - trace()] receive_response_body.complete
+[2025-10-14 02:52:00,450] [DEBUG] [_trace.py:47 - trace()] response_closed.started
+[2025-10-14 02:52:00,450] [DEBUG] [_trace.py:47 - trace()] response_closed.complete
+[2025-10-14 02:52:00,450] [DEBUG] [_base_client.py:1016 - request()] HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Tue, 14 Oct 2025 01:51:51 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-model', 'text-embedding-ada-002-v2'), ('openai-organization', 'user-8adwua04dismr8hiw4ywtfpm'), ('openai-processing-ms', '40'), ('openai-project', 'proj_OfpXUE2umFtFZX4ebQwNNJP2'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('via', 'envoy-router-864fbf466c-5pc28'), ('x-envoy-upstream-service-time', '221'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999989'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_c4b56450de04492197e72c21528cd1aa'), ('x-openai-proxy-wasm', 'v0.1'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=R3avW5rtnmJq8MuStUSuoNpX7OmSIoLuRCmd9Tkxf2E-1760406711-1.0.1.1-4tTYfuLwo1MiYekgUE3rKp_REo7GTBHHk3KOvErIg0Ax4Suu_YSsD0kSFaMYlTB.GTLN61ZeNLbJL3IFXGeovW7InR3buqRVtYK8Jix9xaI; path=/; expires=Tue, 14-Oct-25 02:21:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=XJdHniZzL0AAxlQLN_GqL2xz5Ah6jeftTXP.FuX8_NM-1760406711435-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '98e36f16ab28314b-MAD'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+[2025-10-14 02:52:00,450] [DEBUG] [_base_client.py:1024 - request()] request_id: req_c4b56450de04492197e72c21528cd1aa
+[2025-10-14 02:52:00,497] [DEBUG] [_base_client.py:978 - request()] Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+[2025-10-14 02:52:00,497] [DEBUG] [_trace.py:47 - trace()] connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+[2025-10-14 02:52:00,526] [DEBUG] [_trace.py:47 - trace()] connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001EAC30668B0>
+[2025-10-14 02:52:00,526] [DEBUG] [_trace.py:47 - trace()] start_tls.started ssl_context=<ssl.SSLContext object at 0x000001EAC2597380> server_hostname='api.openai.com' timeout=5.0
+[2025-10-14 02:52:00,558] [DEBUG] [_trace.py:47 - trace()] start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001EAC2629B50>
+[2025-10-14 02:52:00,559] [DEBUG] [_trace.py:47 - trace()] send_request_headers.started request=<Request [b'POST']>
+[2025-10-14 02:52:00,559] [DEBUG] [_trace.py:47 - trace()] send_request_headers.complete
+[2025-10-14 02:52:00,559] [DEBUG] [_trace.py:47 - trace()] send_request_body.started request=<Request [b'POST']>
+[2025-10-14 02:52:00,559] [DEBUG] [_trace.py:47 - trace()] send_request_body.complete
+[2025-10-14 02:52:00,559] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.started request=<Request [b'POST']>
+[2025-10-14 02:52:09,111] [DEBUG] [_trace.py:47 - trace()] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 14 Oct 2025 01:52:00 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'user-8adwua04dismr8hiw4ywtfpm'), (b'openai-processing-ms', b'8002'), (b'openai-project', b'proj_OfpXUE2umFtFZX4ebQwNNJP2'), (b'openai-version', b'2020-10-01'), (b'x-envoy-upstream-service-time', b'8155'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'198666'), (b'x-ratelimit-reset-requests', b'8.64s'), (b'x-ratelimit-reset-tokens', b'400ms'), (b'x-request-id', b'req_1ceed96a471b4992b4bad54f71cfced7'), (b'x-openai-proxy-wasm', b'v0.1'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=AquPZcZW4M12hPVjTiyBBJg8Wy2DBPhueKUr5vd9sd8-1760406720-1.0.1.1-Ah49Skp2je8FE4xyaFK.M3kLWR4yDio6sYwDpNxquCCPvWI2P3JaL2nsRrOl9HzyNx4Q.03J3_OXhYFHgxXQSTqf6A7bE8Gp6B0g8HiM9j8; path=/; expires=Tue, 14-Oct-25 02:22:00 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=g7xx_RWXCH6QOf2zW1nCJYNbfBTG8JGrrUuLwcKpD5Y-1760406720098-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'98e36f1b5c80f77f-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[2025-10-14 02:52:09,112] [INFO] [_client.py:1025 - _send_single_request()] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-10-14 02:52:09,112] [DEBUG] [_trace.py:47 - trace()] receive_response_body.started request=<Request [b'POST']>
+[2025-10-14 02:52:09,115] [DEBUG] [_trace.py:47 - trace()] receive_response_body.complete
+[2025-10-14 02:52:09,115] [DEBUG] [_trace.py:47 - trace()] response_closed.started
+[2025-10-14 02:52:09,115] [DEBUG] [_trace.py:47 - trace()] response_closed.complete
+[2025-10-14 02:52:09,115] [DEBUG] [_base_client.py:1016 - request()] HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Tue, 14 Oct 2025 01:52:00 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'user-8adwua04dismr8hiw4ywtfpm'), ('openai-processing-ms', '8002'), ('openai-project', 'proj_OfpXUE2umFtFZX4ebQwNNJP2'), ('openai-version', '2020-10-01'), ('x-envoy-upstream-service-time', '8155'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '200000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '198666'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '400ms'), ('x-request-id', 'req_1ceed96a471b4992b4bad54f71cfced7'), ('x-openai-proxy-wasm', 'v0.1'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=AquPZcZW4M12hPVjTiyBBJg8Wy2DBPhueKUr5vd9sd8-1760406720-1.0.1.1-Ah49Skp2je8FE4xyaFK.M3kLWR4yDio6sYwDpNxquCCPvWI2P3JaL2nsRrOl9HzyNx4Q.03J3_OXhYFHgxXQSTqf6A7bE8Gp6B0g8HiM9j8; path=/; expires=Tue, 14-Oct-25 02:22:00 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=g7xx_RWXCH6QOf2zW1nCJYNbfBTG8JGrrUuLwcKpD5Y-1760406720098-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '98e36f1b5c80f77f-MAD'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+[2025-10-14 02:52:09,115] [DEBUG] [_base_client.py:1024 - request()] request_id: req_1ceed96a471b4992b4bad54f71cfced7
+[2025-10-14 02:52:09,125] [DEBUG] [logging_decorator.py:72 - wrapper()] app.domain.chat.service.ChatService.ask completed in 9459.58 ms
+[2025-10-14 02:54:52,016] [DEBUG] [_trace.py:47 - trace()] close.started
+[2025-10-14 02:54:52,016] [DEBUG] [_trace.py:47 - trace()] close.complete
+[2025-10-14 02:54:52,016] [DEBUG] [_trace.py:47 - trace()] close.started
+[2025-10-14 02:54:52,017] [DEBUG] [_trace.py:47 - trace()] close.complete
+[2025-10-14 02:54:52,017] [DEBUG] [_trace.py:47 - trace()] close.started
+[2025-10-14 02:54:52,017] [DEBUG] [_trace.py:47 - trace()] close.complete
+[2025-10-14 02:54:54,709] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-14 02:54:55,021] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-14 02:55:09,648] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-14 02:55:09,932] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
