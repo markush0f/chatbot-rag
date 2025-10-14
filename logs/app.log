@@ -1419,3 +1419,5 @@ WHERE document_chunk.document_id IN (%(document_id_1_1)s)]
 [2025-10-14 02:54:55,021] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-14 02:55:09,648] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
 [2025-10-14 02:55:09,932] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-14 02:58:42,092] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.
+[2025-10-14 02:58:42,375] [INFO] [logging_config.py:65 - setup_logging()] Logging configured.

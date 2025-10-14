@@ -60,7 +60,7 @@ class ChatService:
         self.message_service.create(user_msg)
 
         # Get the chat and its linked documents
-        chat = self.session.get(Chat, chat_id)
+        chat = self.repo.get_by_id(chat_id)
         if not chat or not chat.document_ids:
             return self.message_service.create(
                 MessageCreate(

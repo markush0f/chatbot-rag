@@ -25,3 +25,6 @@ class ChatRepository:
         statement = select(Chat).where(Chat.user_id == user_id)
         results = self.session.exec(statement)
         return results.all()
+
+    def get_by_id(self, chat_id: int) -> Chat | None:
+        return self.session.get(Chat, chat_id)
